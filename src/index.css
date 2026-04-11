@@ -1,0 +1,72 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Great+Vibes&display=swap');
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-cursive: "Great Vibes", cursive;
+  
+  --color-matte: #1C1C1C;
+  --color-deep: #000000;
+  --color-accent: #FF8C42;
+  --color-soft: #F5F5F5;
+  --color-light: #BDBDBD;
+}
+
+@layer base {
+  body {
+    @apply bg-matte text-soft font-sans selection:bg-accent selection:text-deep;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-soft to-light;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FF8C42;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e67e3b;
+}
+
+/* Smooth Scroll removed to prevent conflicts with JS scroll */
+html {
+  /* scroll-behavior: smooth; */
+}
+
+/* Swiper Custom Styles */
+.swiper-button-next,
+.swiper-button-prev {
+  @apply !text-accent;
+}
+
+.swiper-pagination-bullet-active {
+  @apply !bg-accent;
+}
+
+.swiper-pagination-bullet {
+  @apply bg-light;
+}
