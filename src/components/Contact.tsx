@@ -24,7 +24,15 @@ const Contact: React.FC = () => {
         body: JSON.stringify(data),
       });
 
-      const result = await response.json();
+      let result;
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        result = await response.json();
+      } else {
+        const text = await response.text();
+        console.error('Server returned non-JSON response:', text);
+        throw new Error('Server error: Please check your Vercel logs.');
+      }
 
       if (response.ok) {
         setStatus('success');
@@ -35,9 +43,9 @@ const Contact: React.FC = () => {
         setErrorMessage(result.message || 'Something went wrong.');
         console.error('Contact form error:', result.message);
       }
-    } catch (error) {
+    } catch (error: any) {
       setStatus('error');
-      setErrorMessage('Failed to connect to the server.');
+      setErrorMessage(error.message || 'Failed to connect to the server.');
       console.error('Contact form fetch error:', error);
     }
   };
