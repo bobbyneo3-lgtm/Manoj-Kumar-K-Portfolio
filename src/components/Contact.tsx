@@ -4,6 +4,7 @@ import { Mail, Phone, ExternalLink, Send, Linkedin } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const [status, setStatus] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = React.useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,13 +28,16 @@ const Contact: React.FC = () => {
 
       if (response.ok) {
         setStatus('success');
+        setErrorMessage(null);
         (e.target as HTMLFormElement).reset();
       } else {
         setStatus('error');
+        setErrorMessage(result.message || 'Something went wrong.');
         console.error('Contact form error:', result.message);
       }
     } catch (error) {
       setStatus('error');
+      setErrorMessage('Failed to connect to the server.');
       console.error('Contact form fetch error:', error);
     }
   };
@@ -156,13 +160,14 @@ const Contact: React.FC = () => {
               <Send className="w-5 h-5" />
             </button>
             {status === 'error' && (
-              <p className="text-red-500 text-xs text-center mt-2">Something went wrong. Please try again.</p>
+              <p className="text-red-500 text-xs text-center mt-2">
+                {errorMessage || 'Something went wrong. Please try again.'}
+              </p>
             )}
           </form>
         </motion.div>
       </div>
     </section>
-
   );
 };
 
