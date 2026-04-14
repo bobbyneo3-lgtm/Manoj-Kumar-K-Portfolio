@@ -23,14 +23,18 @@ const Contact: React.FC = () => {
         body: JSON.stringify(data),
       });
 
+      const result = await response.json();
+
       if (response.ok) {
         setStatus('success');
         (e.target as HTMLFormElement).reset();
       } else {
         setStatus('error');
+        console.error('Contact form error:', result.message);
       }
     } catch (error) {
       setStatus('error');
+      console.error('Contact form fetch error:', error);
     }
   };
 
