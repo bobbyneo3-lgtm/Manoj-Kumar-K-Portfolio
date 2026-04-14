@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PROJECTS } from '../constants';
 import { Project } from '../types';
-import { ArrowUpRight, ChevronLeft, ChevronRight, Play, X } from 'lucide-react';
+import { ArrowUpRight, ChevronLeft, ChevronRight, Play, X, Zap } from 'lucide-react';
 
 interface PortfolioGridProps {
   onProjectClick: (project: Project) => void;
@@ -11,6 +11,7 @@ interface PortfolioGridProps {
 const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onProjectClick }) => {
   const [activeVideoUrl, setActiveVideoUrl] = useState<string | null>(null);
   const [failedModalVideo, setFailedModalVideo] = useState(false);
+  const [showRightClickWarning, setShowRightClickWarning] = useState(false);
   const productDesignProjects = PROJECTS.filter(p => ['7', '8', '2'].includes(p.id));
   const adVideoProject = PROJECTS.find(p => p.id === '6');
 
@@ -27,6 +28,13 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onProjectClick }) => {
     setFailedModalVideo(false);
   };
 
+  const handleContextMenu = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault();
+    setShowRightClickWarning(true);
+    setTimeout(() => setShowRightClickWarning(false), 2000);
+    return false;
+  };
+
   return (
     <section id="works" className="py-16 md:py-24 bg-[#0a0a0a] px-6 md:px-12 lg:px-16 relative overflow-hidden scroll-mt-24">
       {/* Background Decorative Elements */}
@@ -41,28 +49,28 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onProjectClick }) => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="absolute left-0 right-0 -top-16 md:-top-24 text-[18vw] md:text-[18vw] font-display font-black text-white/[0.05] leading-none select-none pointer-events-none uppercase tracking-tighter text-center"
+            className="absolute left-0 right-0 -top-12 md:-top-24 text-[18vw] font-display font-black text-white/[0.05] leading-none select-none pointer-events-none uppercase tracking-tighter text-center w-full"
           >
             Portfolio
           </motion.div>
           
-          <div className="relative z-10 w-full">
+          <div className="relative z-10 w-full flex flex-col items-center md:items-start text-center md:text-left">
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="flex items-center gap-3 text-accent font-bold text-[10px] md:text-xs uppercase tracking-[0.4em] mb-6"
+              className="flex items-center justify-center md:justify-start gap-3 text-accent font-bold text-[10px] md:text-xs uppercase tracking-[0.4em] mb-6"
             >
               <span className="w-8 h-px bg-accent" />
               Selected Projects
             </motion.span>
             
-            <div className="space-y-6 md:space-y-8">
+            <div className="space-y-6 md:space-y-8 w-full">
               <motion.h2
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-4xl md:text-[8rem] lg:text-[10rem] font-display font-bold tracking-tighter leading-none"
+                className="text-4xl md:text-[8rem] lg:text-[10rem] font-display font-bold tracking-tighter leading-none text-center md:text-left"
               >
                 FEATURED <span className="text-accent italic font-serif font-light lowercase tracking-normal">works</span>
               </motion.h2>
@@ -72,7 +80,7 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onProjectClick }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="text-soft/60 text-lg md:text-xl max-w-4xl leading-relaxed"
+                className="text-soft/60 text-lg md:text-xl max-w-4xl leading-relaxed mx-auto md:mx-0"
               >
                 A curated collection of high-impact visual designs and performance-driven ad creatives, meticulously crafted to <span className="text-soft font-bold">Elevate Brands</span> and <span className="text-soft font-bold">Maximize Digital Engagement</span>.
               </motion.p>
@@ -82,7 +90,8 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onProjectClick }) => {
 
         {/* Product Designs Section */}
         <div className="mb-16 md:mb-20">
-          <div className="flex items-center gap-4 mb-8 md:mb-10">
+          <div className="flex items-center justify-center md:justify-start gap-4 mb-8 md:mb-10">
+            <div className="h-px flex-1 bg-white/10 md:hidden" />
             <h3 className="text-xl md:text-2xl font-display font-bold text-soft uppercase tracking-widest">
               Product Designs
             </h3>
@@ -127,7 +136,8 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onProjectClick }) => {
         {/* Ad Videos & Images Section */}
         <div>
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 md:mb-10">
-            <div className="flex items-center gap-4 flex-1">
+            <div className="flex items-center justify-center md:justify-start gap-4 flex-1">
+              <div className="h-px flex-1 bg-white/10 md:hidden" />
               <h3 className="text-lg md:text-2xl font-display font-bold text-soft uppercase tracking-widest whitespace-nowrap">
                 Product Ads
               </h3>
@@ -190,6 +200,25 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onProjectClick }) => {
             })}
           </div>
 
+          {/* Small & Simple Static Banner */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-16 py-6 md:py-8 bg-accent/5 border-y border-accent/20 rounded-2xl flex flex-col items-center justify-center gap-2 text-center"
+          >
+            <div className="flex items-center gap-4">
+              <Zap className="w-4 h-4 md:w-5 md:h-5 text-accent animate-pulse" />
+              <h3 className="text-lg md:text-2xl font-display font-bold text-accent uppercase tracking-[0.2em]">
+                More Projects & Ad Videos Dropping Soon
+              </h3>
+              <Zap className="w-4 h-4 md:w-5 md:h-5 text-accent animate-pulse" />
+            </div>
+            <p className="text-[10px] md:text-xs text-soft/40 uppercase tracking-[0.3em] font-bold">
+              Uploading in progress • Stay Tuned
+            </p>
+          </motion.div>
+
           {/* Mobile Show All Button */}
           {adVideoProject && (
             <div className="mt-6 flex md:hidden justify-center">
@@ -223,6 +252,7 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onProjectClick }) => {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[300] bg-deep/98 backdrop-blur-2xl flex items-center justify-center md:p-4 no-custom-cursor"
             onClick={() => setActiveVideoUrl(null)}
+            onContextMenu={handleContextMenu}
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
@@ -230,6 +260,7 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onProjectClick }) => {
               exit={{ scale: 0.9, opacity: 0 }}
               className="relative w-full max-w-[800px] aspect-square flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
+              onContextMenu={handleContextMenu}
             >
               {/* Close Button - Positioned outside the player on mobile and desktop */}
               <button
@@ -242,10 +273,37 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onProjectClick }) => {
               <div className="w-full h-full bg-black rounded-xl md:rounded-2xl overflow-hidden shadow-2xl border border-white/5 relative">
                 <iframe
                   src={`https://drive.google.com/file/d/${getFileId(activeVideoUrl)}/preview`}
-                  className="w-full h-full border-0"
-                  allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-                  allowFullScreen={true}
+                  className="w-full h-full border-0 relative z-10"
+                  allow="autoplay; fullscreen"
+                  allowFullScreen
                 />
+                
+                {/* The "Watermark" - Big and diagonal like professional previews */}
+                <div className="absolute inset-0 z-20 pointer-events-none select-none overflow-hidden opacity-[0.07] flex items-center justify-center">
+                  <div className="rotate-[-30deg] whitespace-nowrap text-4xl md:text-6xl font-black uppercase tracking-[0.3em] text-white">
+                    MANOJ KARRA DESIGN
+                  </div>
+                </div>
+
+                {/* Subtle Watermark Overlay - Bottom Left */}
+                <div className="absolute bottom-4 left-4 z-20 opacity-40 pointer-events-none select-none flex items-center gap-2">
+                  <Zap className="w-3 h-3 text-accent" />
+                  <span className="text-[8px] uppercase tracking-widest text-soft font-bold">Protected Content • Manoj Karra</span>
+                </div>
+
+                {/* Right-click Warning Message */}
+                <AnimatePresence>
+                  {showRightClickWarning && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0 }}
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[320] bg-accent text-deep px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-[0_0_30px_rgba(255,140,66,0.5)] backdrop-blur-md"
+                    >
+                      Security: Right-click disabled
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             </motion.div>
           </motion.div>

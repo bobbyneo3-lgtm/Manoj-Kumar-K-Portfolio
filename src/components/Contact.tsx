@@ -43,21 +43,22 @@ const Contact: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
+          className="text-center lg:text-left"
         >
           <h2 className="text-2xl md:text-7xl font-display font-bold mb-8">
             Let's Create <br />
             <span className="text-accent">Visuals That Sell.</span>
           </h2>
-          <p className="text-xl text-light mb-12 max-w-md leading-relaxed">
+          <p className="text-xl text-light mb-12 max-w-md leading-relaxed mx-auto lg:mx-0">
             Ready to elevate your brand with high-converting ad creatives? Let's discuss your next project.
           </p>
 
-          <div className="space-y-4 md:space-y-8">
-            <div className="flex items-center gap-3 md:gap-6 group">
+          <div className="space-y-4 md:space-y-8 max-w-md w-fit mx-auto lg:mx-0">
+            <div className="flex items-center justify-start gap-3 md:gap-6 group">
               <div className="w-10 h-10 md:w-14 md:h-14 bg-white/5 rounded-md md:rounded-xl flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-deep transition-all duration-300 shrink-0">
                 <Mail className="w-4 h-4 md:w-6 md:h-6" />
               </div>
-              <div className="min-w-0">
+              <div className="min-w-0 text-left">
                 <p className="text-[9px] md:text-xs text-light uppercase tracking-widest mb-0.5">Email ID</p>
                 <a href="mailto:manojkarra.kumar@gmail.com" className="text-sm md:text-xl font-bold text-soft hover:text-accent transition-colors break-all">
                   manojkarra.kumar@gmail.com
@@ -65,11 +66,11 @@ const Contact: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 md:gap-6 group">
+            <div className="flex items-center justify-start gap-3 md:gap-6 group">
               <div className="w-10 h-10 md:w-14 md:h-14 bg-white/5 rounded-md md:rounded-xl flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-deep transition-all duration-300 shrink-0">
                 <Phone className="w-4 h-4 md:w-6 md:h-6" />
               </div>
-              <div className="min-w-0">
+              <div className="min-w-0 text-left">
                 <p className="text-[9px] md:text-xs text-light uppercase tracking-widest mb-0.5">Phone Number</p>
                 <a href="tel:+919397199199" className="text-sm md:text-xl font-bold text-soft hover:text-accent transition-colors">
                   +91 9397 199 199
@@ -77,11 +78,11 @@ const Contact: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 md:gap-6 group">
+            <div className="flex items-center justify-start gap-3 md:gap-6 group">
               <div className="w-10 h-10 md:w-14 md:h-14 bg-white/5 rounded-md md:rounded-xl flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-deep transition-all duration-300 shrink-0">
                 <ExternalLink className="w-4 h-4 md:w-6 md:h-6" />
               </div>
-              <div className="min-w-0">
+              <div className="min-w-0 text-left">
                 <p className="text-[9px] md:text-xs text-light uppercase tracking-widest mb-0.5">Behance Portfolio</p>
                 <a href="https://www.behance.net/manojkumarkarra" target="_blank" rel="noopener noreferrer" className="text-sm md:text-xl font-bold text-soft hover:text-accent transition-colors break-all">
                   behance.net/manojkumarkarra
@@ -89,11 +90,11 @@ const Contact: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 md:gap-6 group">
+            <div className="flex items-center justify-start gap-3 md:gap-6 group">
               <div className="w-10 h-10 md:w-14 md:h-14 bg-white/5 rounded-md md:rounded-xl flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-deep transition-all duration-300 shrink-0">
                 <Linkedin className="w-4 h-4 md:w-6 md:h-6" />
               </div>
-              <div className="min-w-0">
+              <div className="min-w-0 text-left">
                 <p className="text-[9px] md:text-xs text-light uppercase tracking-widest mb-0.5">LinkedIn Profile</p>
                 <a href="https://www.linkedin.com/in/manojkumarkarra" target="_blank" rel="noopener noreferrer" className="text-sm md:text-xl font-bold text-soft hover:text-accent transition-colors break-all">
                   linkedin.com/in/manojkumarkarra

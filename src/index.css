@@ -12,6 +12,11 @@
   --color-accent: #FF8C42;
   --color-soft: #F5F5F5;
   --color-light: #BDBDBD;
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
 }
 
 @layer base {

@@ -71,6 +71,7 @@ const About: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
+          className="text-center lg:text-left"
         >
           <h2 className="text-2xl md:text-6xl font-display font-bold mb-8">
             About <span className="text-accent">Manoj</span>
@@ -79,10 +80,10 @@ const About: React.FC = () => {
             I am a <span className="text-soft font-bold">Product Visual & Ad Creative Designer</span> with a focus on high-performance visual storytelling.
           </p>
           <p className="text-base md:text-lg text-light/70 leading-relaxed mb-12">
-            I specialize in crafting high-end product ad videos and visual campaigns that don't just look premium—they perform. By blending consumer psychology with high-end aesthetics, I ensure every creative asset drives measurable brand growth and audience engagement. My goal is to help brands stand out in a crowded digital landscape through thoughtful, high-impact design that converts viewers into customers.
+            I specialize in crafting high-end product ad videos and visual campaigns that don't just look premium—they perform. With a <span className="text-soft font-bold">Udemy Certificate</span> in Premiere Pro and video editing, I blend consumer psychology with high-end aesthetics to ensure every creative asset drives measurable brand growth and audience engagement. My goal is to help brands stand out in a crowded digital landscape through thoughtful, high-impact design that converts viewers into customers.
           </p>
 
-          <div className="grid grid-cols-2 gap-8 mb-12">
+          <div className="grid grid-cols-2 gap-8 mb-12 max-w-sm mx-auto lg:mx-0">
             <div className="space-y-2">
               <span className="text-accent font-bold text-3xl">100%</span>
               <p className="text-xs uppercase tracking-widest text-light/40 font-bold">Client Satisfaction</p>
@@ -95,7 +96,7 @@ const About: React.FC = () => {
 
           <div className="space-y-6">
             <h4 className="text-soft font-bold uppercase tracking-widest text-sm">Expertise & Tools</h4>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3">
               {skills.map((skill, idx) => (
                 <motion.span
                   key={idx}
