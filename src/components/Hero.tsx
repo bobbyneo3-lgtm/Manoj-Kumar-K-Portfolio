@@ -16,11 +16,23 @@ const Hero: React.FC = () => {
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-black">
       {/* Premium Background Banner */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black z-10" />
-        <img 
-          src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=2000" 
-          alt="Premium Background" 
-          className="w-full h-full object-cover opacity-60 scale-105 animate-pulse-slow"
+        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-black/90 z-10" />
+        <motion.img 
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ 
+            duration: 20, 
+            repeat: Infinity, 
+            repeatType: "reverse", 
+            ease: "easeInOut" 
+          }}
+          src="https://lh3.googleusercontent.com/d/1FvTKn8Zd_AOMqVvZk_LO6tx-oLjDxvD6" 
+          alt="Manoj Kumar K - Professional Workstation" 
+          className="w-full h-full object-cover opacity-70"
+          onError={(e) => {
+            // Fallback if Drive link fails
+            (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?auto=format&fit=crop&q=80&w=2000';
+          }}
           referrerPolicy="no-referrer"
         />
       </div>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Behance Announcement Card</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0a0a0a;
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #ff8c42, #ffb38a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            border: 1px solid rgba(255, 140, 66, 0.2);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-10">
+
+    <div class="card w-full max-w-4xl p-16 rounded-[40px] shadow-2xl text-center relative overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute -top-20 -right-20 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl"></div>
+
+        <h1 class="text-5xl md:text-7xl font-bold mb-8 tracking-tight text-white font-['Outfit']">
+            I've launched my <br/>
+            <span class="gradient-text">official portfolio!</span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+            View the full interactive experience and my latest work at:
+        </p>
+
+        <div class="inline-block px-10 py-5 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm">
+            <span class="text-3xl md:text-4xl font-bold text-orange-400 tracking-wide">
+                manojkarra.design
+            </span>
+        </div>
+
+        <div class="mt-16 flex justify-center gap-4">
+            <div class="w-2 h-2 rounded-full bg-orange-500"></div>
+            <div class="w-2 h-2 rounded-full bg-orange-500/50"></div>
+            <div class="w-2 h-2 rounded-full bg-orange-500/20"></div>
+        </div>
+    </div>
+
+</body>
+</html>
