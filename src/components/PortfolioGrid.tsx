@@ -90,23 +90,29 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onProjectClick }) => {
 
         {/* Product Designs Section */}
         <div className="mb-16 md:mb-20">
-          <div className="flex items-center justify-center md:justify-start gap-4 mb-8 md:mb-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="flex items-center justify-center md:justify-start gap-4 mb-8 md:mb-10"
+          >
             <div className="h-px flex-1 bg-white/10 md:hidden" />
             <h3 className="text-xl md:text-2xl font-display font-bold text-soft uppercase tracking-widest">
               Product Designs
             </h3>
             <div className="h-px flex-1 bg-white/10" />
-          </div>
+          </motion.div>
 
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
           >
-            {productDesignProjects.map((project) => (
+            {productDesignProjects.map((project, idx) => (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: idx * 0.1 }}
                 className="group relative cursor-pointer"
                 onClick={() => onProjectClick(project)}
               >
@@ -135,7 +141,12 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onProjectClick }) => {
 
         {/* Ad Videos & Images Section */}
         <div>
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 md:mb-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 md:mb-10"
+          >
             <div className="flex items-center justify-center md:justify-start gap-4 flex-1">
               <div className="h-px flex-1 bg-white/10 md:hidden" />
               <h3 className="text-lg md:text-2xl font-display font-bold text-soft uppercase tracking-widest whitespace-nowrap">
@@ -157,7 +168,7 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onProjectClick }) => {
                 <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-accent group-hover:text-deep transition-colors" />
               </motion.button>
             )}
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
             {adVideoProject?.videoGallery?.slice(0, 6).map((video, idx) => {
@@ -167,9 +178,10 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onProjectClick }) => {
               return (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ delay: idx * 0.1 }}
                   className="group relative"
                 >
                   <div 
@@ -278,13 +290,6 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onProjectClick }) => {
                   allowFullScreen
                 />
                 
-                {/* The "Watermark" - Big and diagonal like professional previews */}
-                <div className="absolute inset-0 z-20 pointer-events-none select-none overflow-hidden opacity-[0.07] flex items-center justify-center">
-                  <div className="rotate-[-30deg] whitespace-nowrap text-4xl md:text-6xl font-black uppercase tracking-[0.3em] text-white">
-                    MANOJ KARRA DESIGN
-                  </div>
-                </div>
-
                 {/* Subtle Watermark Overlay - Bottom Left */}
                 <div className="absolute bottom-4 left-4 z-20 opacity-40 pointer-events-none select-none flex items-center gap-2">
                   <Zap className="w-3 h-3 text-accent" />

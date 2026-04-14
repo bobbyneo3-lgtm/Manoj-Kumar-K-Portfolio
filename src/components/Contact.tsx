@@ -55,10 +55,10 @@ const Contact: React.FC = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
         {/* Left Side - Contact Info */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center lg:text-left"
         >
           <h2 className="text-2xl md:text-7xl font-display font-bold mb-8">
@@ -122,10 +122,10 @@ const Contact: React.FC = () => {
 
         {/* Right Side - Contact Form */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="p-6 md:p-10 glass rounded-[20px] md:rounded-[32px] shadow-2xl"
         >
           <form className="space-y-6" onSubmit={handleSubmit}>

@@ -73,12 +73,14 @@ const VideoShowcase: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 mb-8 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 md:mb-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 md:mb-10"
+        >
           <div className="flex items-center gap-4 flex-1">
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
               className="text-2xl md:text-6xl font-display font-bold leading-tight"
             >
               Performance Driven <br />
@@ -98,10 +100,16 @@ const VideoShowcase: React.FC = () => {
             </span>
             <Play className="w-4 h-4 md:w-5 md:h-5 text-accent group-hover:text-deep transition-colors" />
           </motion.button>
-        </div>
-        <p className="text-soft/60 text-lg md:text-xl max-w-4xl mb-8 leading-relaxed">
+        </motion.div>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ delay: 0.1 }}
+          className="text-soft/60 text-lg md:text-xl max-w-4xl mb-8 leading-relaxed"
+        >
           Crafting high-impact visual stories through professional video editing and motion graphics. Each ad is meticulously edited to drive engagement and maximize performance across all digital platforms.
-        </p>
+        </motion.p>
 
         {/* Tools Badges */}
         <motion.div 
@@ -122,7 +130,12 @@ const VideoShowcase: React.FC = () => {
         </motion.div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+      <motion.div 
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        className="max-w-7xl mx-auto px-4 md:px-6"
+      >
         <Swiper
           onSwiper={(swiper) => { swiperRef.current = swiper; }}
           modules={[Autoplay, Pagination, Navigation]}
@@ -247,7 +260,7 @@ const VideoShowcase: React.FC = () => {
         <div className="mt-16 md:hidden px-12">
           <div className="h-px w-full bg-accent/20" />
         </div>
-      </div>
+      </motion.div>
 
       {/* Video Player Modal (Full Screen) */}
       <AnimatePresence>
