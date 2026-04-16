@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import PortfolioGrid from './components/PortfolioGrid';
 import CaseStudyModal from './components/CaseStudyModal';
 import VideoShowcase from './components/VideoShowcase';
+import AIFlyers from './components/AIFlyers';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -147,6 +148,7 @@ export default function App() {
               <Hero />
               <PortfolioGrid onProjectClick={setSelectedProject} />
               <VideoShowcase />
+              <AIFlyers />
               <About />
               <Contact />
             </main>
