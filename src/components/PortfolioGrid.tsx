@@ -66,14 +66,56 @@ const PortfolioGrid: React.FC<PortfolioGridProps> = ({ onProjectClick }) => {
             </motion.span>
             
             <div className="space-y-6 md:space-y-8 w-full">
-              <motion.h2
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+            <motion.h2
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-[8rem] lg:text-[10rem] font-display font-bold tracking-tighter leading-none text-center md:text-left flex flex-col md:flex-row md:items-baseline gap-2 md:gap-x-8"
+            >
+              <div className="flex justify-center md:justify-start items-center">
+                {"FEATURED".split("").map((char, i) => (
+                  <motion.span
+                    key={i}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.1,
+                      delay: i * 0.1,
+                      ease: "easeIn"
+                    }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  whileInView={{ 
+                    opacity: [1, 0, 1, 0, 1, 0],
+                  }}
+                  viewport={{ once: true }}
+                  transition={{ 
+                    duration: 1,
+                    times: [0, 0.2, 0.4, 0.6, 0.8, 1],
+                    ease: "linear"
+                  }}
+                  className="inline-block w-1 md:w-4 h-[0.8em] bg-accent ml-1 md:ml-4 self-center"
+                />
+              </div>
+              <motion.span 
+                initial={{ clipPath: 'inset(0 100% 0 0)' }}
+                whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
                 viewport={{ once: true }}
-                className="text-4xl md:text-[8rem] lg:text-[10rem] font-display font-bold tracking-tighter leading-none text-center md:text-left"
+                transition={{ 
+                  duration: 1.5, 
+                  delay: 0.8,
+                  ease: [0.45, 0, 0.55, 1] 
+                }}
+                className="text-accent italic font-serif font-light lowercase tracking-normal block md:inline"
               >
-                FEATURED <span className="text-accent italic font-serif font-light lowercase tracking-normal">works</span>
-              </motion.h2>
+                works
+              </motion.span>
+            </motion.h2>
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}

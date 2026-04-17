@@ -128,17 +128,25 @@ const AIFlyers: React.FC = () => {
           {FLYERS.slice(0, 6).map((flyer, idx) => (
             <motion.div
               key={flyer.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: idx * 0.1, duration: 0.8, ease: "easeOut" }}
+              initial={{ opacity: 0, y: 100, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ 
+                delay: idx * 0.15, 
+                duration: 0.9, 
+                ease: [0.215, 0.61, 0.355, 1] 
+              }}
               className="group relative overflow-hidden rounded-[24px] md:rounded-[32px] glass bg-white/5 cursor-pointer hover:shadow-[0_0_30px_rgba(255,140,66,0.15)] transition-shadow duration-500 aspect-square"
             >
               <motion.img
-                initial={{ scale: 1.2, opacity: 0 }}
+                initial={{ scale: 1.3, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 0.8 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1.5, ease: "easeOut", delay: idx * 0.1 }}
+                transition={{ 
+                  duration: 1.8, 
+                  ease: [0.16, 1, 0.3, 1], 
+                  delay: idx * 0.15 + 0.1 
+                }}
                 src={flyer.image}
                 alt={flyer.title}
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:opacity-100"
@@ -268,20 +276,38 @@ const AIFlyers: React.FC = () => {
                 <motion.div
                   initial={{ opacity: 0, y: 30, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
+                  whileHover={{ y: -5 }}
                   transition={{ 
                     delay: FLYERS.length * 0.05,
                     duration: 0.6,
                     ease: [0.215, 0.61, 0.355, 1]
                   }}
-                  className="group relative overflow-hidden rounded-[24px] border border-dashed border-white/10 flex flex-col items-center justify-center p-6 text-center aspect-square bg-white/[0.02]"
+                  className="group relative overflow-hidden rounded-[24px] border border-dashed border-white/10 flex flex-col items-center justify-center p-6 text-center aspect-square bg-white/[0.02] cursor-default"
                 >
-                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-4 group-hover:bg-accent/10 transition-colors">
-                    <Sparkles className="w-6 h-6 text-accent/40 group-hover:text-accent transition-colors" />
-                  </div>
-                  <p className="text-soft/40 text-[10px] uppercase tracking-[0.2em] font-bold mb-1">Stay Tuned</p>
-                  <h3 className="text-soft/60 font-display font-bold text-xs md:text-sm leading-tight">
-                    More designs<br/>uploaded soon
-                  </h3>
+                  <motion.div 
+                    animate={{ 
+                      boxShadow: ["0 0 0px rgba(186, 255, 41, 0)", "0 0 20px rgba(186, 255, 41, 0.2)", "0 0 0px rgba(186, 255, 41, 0)"],
+                      scale: [1, 1.05, 1]
+                    }}
+                    transition={{ 
+                      duration: 3, 
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                    className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-4 group-hover:bg-accent/15 transition-colors relative"
+                  >
+                    <Sparkles className="w-6 h-6 text-accent/40 group-hover:text-accent transition-all duration-500" />
+                  </motion.div>
+                  
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    className="space-y-1"
+                  >
+                    <p className="text-soft/40 text-[10px] uppercase tracking-[0.2em] font-bold transition-colors group-hover:text-soft/60">Stay Tuned</p>
+                    <h3 className="text-soft/60 font-display font-bold text-xs md:text-sm leading-tight transition-colors group-hover:text-soft">
+                      More designs<br/>uploaded soon
+                    </h3>
+                  </motion.div>
                 </motion.div>
               </div>
 
